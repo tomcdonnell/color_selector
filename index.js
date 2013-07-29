@@ -12,36 +12,33 @@
 *
 \**************************************************************************************************/
 
-window.addEventListener('load', onLoadWindow, false);
-
-// Functions. //////////////////////////////////////////////////////////////////////////////////////
-
-function onLoadWindow(e)
-{
-   try
+$(document).ready
+(
+   function onLoadWindow(e)
    {
-      var f = 'onLoadWindow()';
-      UTILS.checkArgs(f, arguments, [Event]);
-      DomBuilder.apply(window);
+      try
+      {
+         var f = 'onLoadWindow()';
+         UTILS.checkArgs(f, arguments, ['function']);
 
-      var selectorColor = new SelectorColor(405, 135);
-      var body          = document.body;
+         var selectorColor = new SelectorColor(405, 135);
 
-      body.appendChild
-      (
-         A
+         $('body').append
          (
-            {style: 'font-size: small', href: 'http://www.tomcdonnell.net'},
-            'Back to tomcdonnell.net'
-         )
-      );
-      body.appendChild(H1({style: 'margin: 0'}, 'Color Selector'));
-      body.appendChild(selectorColor.getDiv());
+            A
+            (
+               {style: 'font-size: small', href: 'http://www.tomcdonnell.net'},
+               'Back to tomcdonnell.net'
+            ),
+            H1({style: 'margin: 0'}, 'Color Selector'),
+            selectorColor.getDiv()
+         );
+      }
+      catch (e)
+      {
+         UTILS.printExceptionToConsole(f, e);
+      }
    }
-   catch (e)
-   {
-      UTILS.printExceptionToConsole(f, e);
-   }
-}
+);
 
 /*******************************************END*OF*FILE********************************************/
